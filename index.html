@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAXIMUM OVERDRIVE PORTFOLIO</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Press+Start+2P&family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Orbitron', sans-serif;
+            background: linear-gradient(45deg, #0f0c29, #302b63, #24243e);
+            color: #00ffea;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        /* Glitch effect for text */
+        .glitch {
+            position: relative;
+            animation: glitch 5s infinite;
+        }
+        
+        @keyframes glitch {
+            0% { text-shadow: 2px 2px 0 #ff00ff, -2px -2px 0 #00ffea; }
+            2% { text-shadow: -2px -2px 0 #ff00ff, 2px 2px 0 #00ffea; }
+            4%, 100% { text-shadow: 2px 2px 0 #ff00ff, -2px -2px 0 #00ffea; }
+        }
+        
+        /* Main container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+        }
+        
+        /* Header section */
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            border-bottom: 5px dashed #ff00ff;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none"/><path d="M0,0 L100,100 M100,0 L0,100" stroke="%23ff00ff" stroke-width="1" opacity="0.2"/></svg>');
+            z-index: -1;
+        }
+        
+        h1 {
+            font-size: 4.5rem;
+            margin-bottom: 10px;
+            color: #ff00ff;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            text-shadow: 0 0 15px #ff00ff;
+        }
+        
+        .tagline {
+            font-size: 1.8rem;
+            color: #00ffea;
+            margin-bottom: 20px;
+            font-family: 'Press Start 2P', cursive;
+        }
+        
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 30px 0;
+        }
+        
+        .nav-btn {
+            background: rgba(0, 0, 0, 0.6);
+            border: 2px solid #00ffea;
+            color: #00ffea;
+            padding: 15px 25px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: bold;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 0;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .nav-btn:hover {
+            background: #00ffea;
+            color: #000;
+            box-shadow: 0 0 20px #00ffea;
+            transform: scale(1.1);
+        }
+        
+        /* Content sections */
+        .section {
+            display: none;
+            padding: 40px;
+            margin: 40px 0;
+            background: rgba(0, 0, 0, 0.7);
+            border: 3px solid #ff00ff;
+            border-radius: 10px;
+            box-shadow: 0 0 30px rgba(255, 0, 255, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .section.active {
+            display: block;
+            animation: fadeIn 0.8s;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        h2 {
+            font-size: 2.8rem;
+            color: #ff00ff;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            border-bottom: 3px solid #00ffea;
+            padding-bottom: 10px;
+        }
+        
+        /* About section */
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .avatar {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        
+        .avatar-img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 5px solid #00ffea;
+            box-shadow: 0 0 30px #00ffea;
+            background: linear-gradient(45deg, #ff00ff, #00ffea);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+            color: #000;
+        }
+        
+        .about-text {
+            flex: 2;
+            min-width: 300px;
+            font-size: 1.3rem;
+            line-height: 1.8;
+        }
+        
+        /* Projects section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .project-card {
+            background: rgba(0, 255, 234, 0.1);
+            border: 2px solid #00ffea;
+            padding: 25px;
+            border-radius: 10px;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px) rotate(3deg);
+            box-shadow: 0 15px 30px rgba(0, 255, 234, 0.5);
+            border-color: #ff00ff;
+        }
+        
+        .project-card h3 {
+            color: #ff00ff;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Skills section */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        
+        .skill {
+            background: rgba(255, 0, 255, 0.2);
+            border: 2px solid #ff00ff;
+            padding: 20px;
+            min-width: 200px;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .skill:hover {
+            transform: scale(1.2);
+            background: rgba(0, 255, 234, 0.2);
+            border-color: #00ffea;
+        }
+        
+        .skill i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: #00ffea;
+        }
+        
+        /* Contact section */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+            color: #00ffea;
+        }
+        
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid #ff00ff;
+            color: #00ffea;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.1rem;
+        }
+        
+        .form-group textarea {
+            height: 200px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(45deg, #ff00ff, #00ffea);
+            border: none;
+            color: #000;
+            padding: 18px 40px;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.3rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        
+        .submit-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px #ff00ff;
+        }
+        
+        /* Floating elements */
+        .floating {
+            position: fixed;
+            z-index: -1;
+            font-size: 2rem;
+            animation: float 20s infinite linear;
+            opacity: 0.3;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            100% { transform: translateY(-1000px) rotate(360deg); }
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px;
+            margin-top: 60px;
+            border-top: 5px dashed #00ffea;
+            font-size: 1.2rem;
+            color: #ff00ff;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            color: #00ffea;
+            font-size: 2.5rem;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: #ff00ff;
+            transform: scale(1.5);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            .tagline {
+                font-size: 1.2rem;
+            }
+            
+            .section {
+                padding: 25px;
+            }
+            
+            .nav-btn {
+                padding: 12px 20px;
+                font-size: 1rem;
+            }
+        }
+        
+        /* Easter egg */
+        .easter-egg {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            background: #ff00ff;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            z-index: 100;
+            transition: all 0.3s;
+        }
+        
+        .easter-egg:hover {
+            transform: scale(1.3);
+            box-shadow: 0 0 20px #ff00ff;
+        }
+        
+        /* Secret message */
+        .secret-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            background: rgba(0, 0, 0, 0.9);
+            border: 5px solid #00ffea;
+            padding: 40px;
+            z-index: 1000;
+            text-align: center;
+            transition: transform 0.5s;
+            max-width: 90%;
+        }
+        
+        .secret-message.active {
+            transform: translate(-50%, -50%) scale(1);
+        }
+        
+        .secret-message h3 {
+            color: #ff00ff;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            color: #ff00ff;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating elements for background -->
+    <div class="floating" style="top: 10%; left: 5%;">&#60;/&#62;</div>
+    <div class="floating" style="top: 20%; left: 80%;">{};</div>
+    <div class="floating" style="top: 40%; left: 15%;">#CSS</div>
+    <div class="floating" style="top: 60%; left: 70%;">@keyframes</div>
+    <div class="floating" style="top: 80%; left: 20%;">JS</div>
+    <div class="floating" style="top: 30%; left: 90%;">React</div>
+    
+    <div class="container">
+        <header>
+            <div class="header-bg"></div>
+            <h1 class="glitch">AlgoShek Abhi</h1>
+            <div class="tagline">PUSHING DIGITAL BOUNDARIES TO THE MAX</div>
+            <p style="font-size: 1.3rem; max-width: 800px; margin: 0 auto;">
+                I create websites that break conventions, challenge perceptions, and deliver unforgettable experiences.
+            </p>
+        </header>
+        
+        <nav>
+            <button class="nav-btn" data-target="about">ABOUT ME</button>
+            <button class="nav-btn" data-target="projects">PROJECTS</button>
+            <button class="nav-btn" data-target="skills">SKILLS</button>
+            <button class="nav-btn" data-target="contact">CONTACT</button>
+            <button class="nav-btn" id="randomize">RANDOMIZE!</button>
+        </nav>
+        
+        <main>
+            <!-- About Section -->
+            <section id="about" class="section active">
+                <h2>ABOUT THE AlgoShek Abhi</h2>
+                <div class="about-content">
+                    <div class="avatar">
+                        <div class="avatar-img">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                    </div>
+                    <div class="about-text">
+ <p>Hello! 
+    I’m <b>Abhishek Kannaujiya</b>, a passionate and dedicated B.Tech 3rd-year student pursuing Information Technology at Rajkiya Engineering College, Banda.
+            </p>
+ <br>
+                        <p>With over 2 years of experience in creating mind-bending digital experiences, I've developed a unique approach that combines cutting-edge technology with radical creativity.</p>
+                        <br>
+                        <p>When I'm not coding, you can find me experimenting with generative art, exploring VR environments, or building interactive installations that challenge how we perceive digital spaces.</p>
+                        <br>
+                        <p><strong>Philosophy:</strong> If it doesn't break at least three design rules, it's not innovative enough.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Projects Section -->
+            <section id="projects" class="section">
+                <h2>DIMENSION-BENDING PROJECTS</h2>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <h3>NEURAL DASHBOARD</h3>
+                        <p>A fully interactive data visualization platform that responds to brainwave patterns (via EEG headset). Users can navigate datasets with their focus levels.</p>
+                        <br>
+                        <p><strong>Tech:</strong> WebGL, Three.js, Web Bluetooth API, Machine Learning</p>
+                    </div>
+                    <div class="project-card">
+                        <h3>GLITCH GALLERY</h3>
+                        <p>An online art gallery that intentionally corrupts and glitches digital artwork based on user interactions. Each visit creates a unique viewing experience.</p>
+                        <br>
+                        <p><strong>Tech:</strong> Canvas API, WebAssembly, Custom GLSL shaders</p>
+                    </div>
+                    <div class="project-card">
+                        <h3>VOID CHAT</h3>
+                        <p>A messaging platform where conversations disappear into digital "black holes" after 24 hours. Messages warp and distort as they approach deletion.</p>
+                        <br>
+                        <p><strong>Tech:</strong> WebSockets, Node.js, SVG Animations, IndexedDB</p>
+                    </div>
+                    <div class="project-card">
+                        <h3>QUANTUM PORTFOLIO</h3>
+                        <p>A portfolio website that exists in multiple states simultaneously. The content changes based on the observer's mouse movements and time of day.</p>
+                        <br>
+                        <p><strong>Tech:</strong> Quantum-inspired algorithms, CSS Houdini, Intersection Observer API</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Skills Section -->
+            <section id="skills" class="section">
+                <h2>TECHNO-SORCERY SKILLS</h2>
+                <div class="skills-container">
+                    <div class="skill">
+                        <i class="fab fa-html5"></i>
+                        <h3>HTML</h3>
+                        <p>Pushing HTML beyond semantic markup into experiential territory</p>
+                    </div>
+                    <div class="skill">
+                        <i class="fab fa-css3-alt"></i>
+                        <h3> CSS</h3>
+                        <p>Creating styles that respond to device sensors and user behavior</p>
+                    </div>
+                    <div class="skill">
+                        <i class="fab fa-js-square"></i>
+                        <h3>JAVASCRIPT </h3>
+                        <p>Weaving spells with code that bends reality in the browser</p>
+                    </div>
+                    <div class="skill">
+                        <i class="fas fa-gamepad"></i>
+                        <h3>DATABASE</h3>
+                        <p> Working on MYSQL and MS-SQL database.</p>
+                    </div>
+                    <div class="skill">
+                        <i class="fas fa-brain"></i>
+                        <h3>GENERATIVE ART</h3>
+                        <p>Creating systems that produce unique, algorithmically-generated visuals</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Contact Section -->
+            <section id="contact" class="section">
+                <h2>TRANSMISSION HUB</h2>
+                <div class="contact-form">
+                    <div class="form-group">
+                        <label for="name">YOUR DESIGNATION:</label>
+                        <input type="text" id="name" placeholder="Enter your codename">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">NEURAL LINK ADDRESS:</label>
+                        <input type="email" id="email" placeholder="your@neural.link">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">MESSAGE PACKET:</label>
+                        <textarea id="message" placeholder="Transmit your encrypted message..."></textarea>
+                    </div>
+                    <button class="submit-btn" id="send-message">INITIATE TRANSMISSION</button>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <p>AlgoShek Abhi PORTFOLIO | TRANSMISSION FREQUENCY: 24/7</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-codepen"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p style="margin-top: 20px; font-size: 0.9rem;">WARNING: This portfolio may cause temporary reality distortion. View at your own risk.</p>
+        </footer>
+    </div>
+    
+    <!-- Easter Egg -->
+    <div class="easter-egg" id="easterEgg">
+        <i class="fas fa-question"></i>
+    </div>
+    
+    <!-- Secret Message -->
+    <div class="secret-message" id="secretMessage">
+        <span class="close-btn" id="closeSecret">&times;</span>
+        <h3>SECRET MESSAGE UNLOCKED!</h3>
+        <p style="font-size: 1.5rem; color: #00ffea; margin-bottom: 20px;">
+            You've discovered the hidden layer of this portfolio!
+        </p>
+        <p style="font-size: 1.2rem; color: #fff;">
+            This website contains 7 Easter eggs. You found one!<br>
+            Keep exploring to discover the others...
+        </p>
+        <p style="margin-top: 30px; color: #ff00ff; font-size: 1.5rem;">
+            🤖 👾 💻
+        </p>
+    </div>
+    
+    <script>
+        // Navigation functionality
+        document.querySelectorAll('.nav-btn').forEach(button => {
+            if (button.id !== 'randomize') {
+                button.addEventListener('click', () => {
+                    const targetId = button.getAttribute('data-target');
+                    
+                    // Hide all sections
+                    document.querySelectorAll('.section').forEach(section => {
+                        section.classList.remove('active');
+                    });
+                    
+                    // Show target section
+                    document.getElementById(targetId).classList.add('active');
+                    
+                    // Add visual feedback
+                    button.style.background = '#00ffea';
+                    button.style.color = '#000';
+                    setTimeout(() => {
+                        button.style.background = '';
+                        button.style.color = '';
+                    }, 300);
+                });
+            }
+        });
+        
+        // Randomize button
+        document.getElementById('randomize').addEventListener('click', () => {
+            // Change background gradient
+            const colors = [
+                ['#0f0c29', '#302b63', '#24243e'],
+                ['#23074d', '#cc5333', '#23074d'],
+                ['#000000', '#434343', '#000000'],
+                ['#3a1c71', '#d76d77', '#ffaf7b'],
+                ['#22c1c3', '#fdbb2d', '#22c1c3']
+            ];
+            
+            const randomColors = colors[Math.floor(Math.random() * colors.length)];
+            document.body.style.background = `linear-gradient(45deg, ${randomColors[0]}, ${randomColors[1]}, ${randomColors[2]})`;
+            
+            // Change all headings color
+            const headings = document.querySelectorAll('h1, h2, h3');
+            const headingColors = ['#ff00ff', '#00ffea', '#ffff00', '#ff7700', '#ff00aa'];
+            const randomHeadingColor = headingColors[Math.floor(Math.random() * headingColors.length)];
+            
+            headings.forEach(heading => {
+                heading.style.color = randomHeadingColor;
+            });
+            
+            // Add floating elements
+            const symbols = ['{}', '&lt;/&gt;', '#CSS', 'JS', 'React', 'Vue', 'π', 'Σ', 'Ω', '∞'];
+            for (let i = 0; i < 3; i++) {
+                const floating = document.createElement('div');
+                floating.className = 'floating';
+                floating.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+                floating.style.left = `${Math.random() * 100}%`;
+                floating.style.top = `${Math.random() * 100}%`;
+                floating.style.fontSize = `${Math.random() * 2 + 1.5}rem`;
+                document.body.appendChild(floating);
+                
+                // Remove after animation
+                setTimeout(() => {
+                    floating.remove();
+                }, 20000);
+            }
+            
+            // Add visual feedback to button
+            const btn = document.getElementById('randomize');
+            btn.innerHTML = '<i class="fas fa-sync-alt"></i> RANDOMIZED!';
+            setTimeout(() => {
+                btn.innerHTML = 'RANDOMIZE!';
+            }, 1000);
+        });
+        
+        // Contact form submission
+        document.getElementById('send-message').addEventListener('click', () => {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            if (!name || !email || !message) {
+                alert('ERROR: Transmission fields incomplete. Please fill all data fields.');
+                return;
+            }
+            
+            // Create a cool transmission effect
+            const btn = document.getElementById('send-message');
+            btn.innerHTML = '<i class="fas fa-satellite-dish"></i> TRANSMITTING...';
+            btn.style.background = 'linear-gradient(45deg, #ff00ff, #00ffea)';
+            
+            setTimeout(() => {
+                btn.innerHTML = '<i class="fas fa-check"></i> TRANSMISSION SENT!';
+                btn.style.background = 'linear-gradient(45deg, #00ff00, #00ffea)';
+                
+                // Reset form
+                document.getElementById('name').value = '';
+                document.getElementById('email').value = '';
+                document.getElementById('message').value = '';
+                
+                // Reset button after 3 seconds
+                setTimeout(() => {
+                    btn.innerHTML = 'INITIATE TRANSMISSION';
+                    btn.style.background = 'linear-gradient(45deg, #ff00ff, #00ffea)';
+                }, 3000);
+            }, 2000);
+        });
+        
+        // Easter egg functionality
+        document.getElementById('easterEgg').addEventListener('click', () => {
+            document.getElementById('secretMessage').classList.add('active');
+            
+            // Add glitch effect to the whole page
+            document.body.style.animation = 'glitch 0.3s';
+            setTimeout(() => {
+                document.body.style.animation = '';
+            }, 300);
+        });
+        
+        // Close secret message
+        document.getElementById('closeSecret').addEventListener('click', () => {
+            document.getElementById('secretMessage').classList.remove('active');
+        });
+        
+        // More interactive elements
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                // Add a random rotation on hover
+                const rotation = (Math.random() * 10) - 5;
+                card.style.transform = `translateY(-10px) rotate(${rotation}deg)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0) rotate(0deg)';
+            });
+        });
+        
+        // Add keyboard interaction
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.getElementById('secretMessage').classList.remove('active');
+            }
+            
+            // Secret code: "cyber" shows the secret message
+            if (e.key === 'c' || e.key === 'C') {
+                // Simple check for "cyber" typing (just for demo)
+                setTimeout(() => {
+                    document.getElementById('secretMessage').classList.add('active');
+                }, 100);
+            }
+        });
+        
+        // Initial animation for page load
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 1s';
+            
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+            
+            // Add some floating elements on load
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    const floating = document.createElement('div');
+                    floating.className = 'floating';
+                    floating.textContent = ['{}', '</>', 'JS', '#CSS', 'React'][i];
+                    floating.style.left = `${Math.random() * 100}%`;
+                    floating.style.top = `${Math.random() * 100}%`;
+                    floating.style.fontSize = `${Math.random() * 2 + 1.5}rem`;
+                    document.body.appendChild(floating);
+                    
+                    // Remove after animation
+                    setTimeout(() => {
+                        if (floating.parentNode) {
+                            floating.remove();
+                        }
+                    }, 20000);
+                }, i * 500);
+            }
+        });
+    </script>
+</body>
+</html>
